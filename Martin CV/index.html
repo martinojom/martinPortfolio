@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martin Ojom - 3D Character Rigger & Animator</title>
+
+    <link rel="stylesheet" type="text/CSS" href="style.css">
+    <script src="script.js"></script>
+
+    <style>
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(30px);
+                animation-timing-function: ease-out;
+            }
+
+            50% {
+                transform: translateY(0);
+                animation-timing-function: ease-in;
+            }
+        }
+
+
+
+        .bouncing-ball {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--highlight-blue), var(--highlight-teal));
+            border-radius: 50%;
+            right: 10%;
+            top: 20px;
+            z-index: 2;
+            box-shadow: 0 0 20px rgba(0, 153, 255, 0.678), 0 0 50px white;
+            animation: bounce 5s infinite;
+            animation-play-state: running;
+        }
+
+        .bouncing-ball:hover {
+            animation-play-state: paused;
+        }
+
+        .ball-shadow {
+            position: absolute;
+            width: 40px;
+            height: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            filter: blur(3px);
+            right: 10%;
+            bottom: 20px;
+            z-index: 1;
+            transform: scale(1, 0.3);
+            animation: ballShadow 2s infinite;
+        }
+
+        .my-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        @keyframes typewriter {
+            0% {
+                width: 0;
+            }
+
+            70% {
+                width: 100%;
+            }
+
+            90% {
+                width: 100%;
+            }
+
+            100% {
+                width: 0;
+            }
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .code-content {
+            position: absolute;
+            font-family: 'Courier New', monospace;
+            color: rgba(0, 153, 255, 0.15);
+            font-size: 16px;
+            line-height: 1.5;
+            overflow: hidden;
+            white-space: pre;
+            max-width: 300px;
+        }
+
+        .code-content-left {
+            top: 25%;
+            left: 50px;
+            text-align: left;
+        }
+
+        .code-content-right {
+            bottom: 25%;
+            right: 50px;
+            text-align: left;
+        }
+
+        .code-line {
+            display: block;
+            overflow: hidden;
+            position: relative;
+            white-space: nowrap;
+            width: 0;
+        }
+
+        /* Infinite animations with different durations and delays */
+        .code-line:nth-child(1) {
+            animation: typewriter 8s steps(40) 0.5s infinite;
+        }
+
+        .code-line:nth-child(2) {
+            animation: typewriter 8s steps(40) 1.5s infinite;
+        }
+
+        .code-line:nth-child(3) {
+            animation: typewriter 8s steps(40) 2.5s infinite;
+        }
+
+        .code-line:nth-child(4) {
+            animation: typewriter 8s steps(40) 3.5s infinite;
+        }
+
+        .code-line:nth-child(5) {
+            animation: typewriter 8s steps(40) 4.5s infinite;
+        }
+
+        .code-line:nth-child(6) {
+            animation: typewriter 8s steps(40) 5.5s infinite;
+        }
+
+        .cursor {
+            position: absolute;
+            display: inline-block;
+            width: 2px;
+            height: 16px;
+            background-color: rgba(0, 153, 255, 0.4);
+            animation: blink 0.8s infinite;
+        }
+
+        .cursor-left {
+            top: 0;
+            left: 0;
+        }
+
+        .cursor-right {
+            bottom: 0;
+            right: 0;
+        }
+
+        @keyframes ballShadow {
+
+            0%,
+            100% {
+                transform: scale(1, 0.3);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: scale(0.7, 0.2);
+                opacity: 0.3;
+            }
+
+        }
+
+        /* Global Styles */
+        :root {
+            --dark-bg: #0a0e1a;
+            --text-color: #ffffff;
+            --highlight-blue: #0099ff;
+            --highlight-teal: #00d4d4;
+            --accent-color: #ff3366;
+            --card-bg: #121a30;
+            --border-color: #252850;
+            --grid-color: rgba(0, 153, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0.7;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--dark-bg);
+            background-image:
+                linear-gradient(rgba(0, 153, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 153, 255, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 153, 255, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 30px;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 153, 255, 0.1);
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--highlight-blue), var(--highlight-teal));
+            background-size: 200% 100%;
+            animation: gradientShift 5s ease infinite;
+        }
+
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            z-index: 0;
+            background:
+                radial-gradient(circle at 30% 30%, rgba(0, 153, 255, 0.4) 0%, transparent 20%),
+                radial-gradient(circle at 70% 60%, rgba(0, 212, 212, 0.4) 0%, transparent 20%);
+        }
+
+        .name {
+            font-size: 3.5rem;
+            letter-spacing: 8px;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 0 10px rgba(0, 153, 255, 0.5);
+        }
+
+        .title {
+            font-size: 1.3rem;
+            color: var(--highlight-teal);
+            margin-bottom: 25px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: 8px 18px;
+            border-radius: 25px;
+            background-color: rgba(0, 153, 255, 0.1);
+            border: 1px solid rgba(0, 153, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-info a:hover {
+            background-color: var(--highlight-blue);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 153, 255, 0.3);
+        }
+
+        .contact-info a::before {
+            content: "•";
+            color: var(--highlight-teal);
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border-left: 5px solid var(--highlight-blue);
+            position: relative;
+            overflow: hidden;
+            transform: translateZ(0);
+        }
+
+        .about::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(135deg, rgba(0, 153, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(0, 212, 212, 0.08) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .about p {
+            text-align: justify;
+            line-height: 1.9;
+            font-size: 1.05rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Two Column Layout */
+        .two-columns {
+            display: flex;
+            gap: 30px;
+        }
+
+        .main-column {
+            flex: 2;
+        }
+
+        .side-column {
+            flex: 1;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 1.7rem;
+            color: var(--text-color);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 3px;
+            display: inline-block;
+            padding-bottom: 8px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--highlight-blue), var(--highlight-teal));
+            background-size: 200% 100%;
+            animation: gradientShift 5s ease infinite;
+        }
+
+        /* 3D Rig Decorative Elements */
+        .rig-line {
+            position: absolute;
+            z-index: 0;
+            border-left: 1px solid rgba(0, 153, 255, 0.2);
+        }
+
+        .rig-line-1 {
+            height: 80px;
+            left: 30px;
+            top: -40px;
+        }
+
+        .rig-line-2 {
+            height: 120px;
+            left: 80px;
+            top: -60px;
+        }
+
+        .rig-line-3 {
+            height: 60px;
+            left: 130px;
+            top: -30px;
+        }
+
+        .rig-circle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--highlight-blue);
+            z-index: 0;
+        }
+
+        .rig-circle-1 {
+            top: -40px;
+            left: 30px;
+            animation: pulse 3s infinite;
+        }
+
+        .rig-circle-2 {
+            top: -60px;
+            left: 80px;
+            animation: pulse 4s infinite;
+        }
+
+        .rig-circle-3 {
+            top: -30px;
+            left: 130px;
+            animation: pulse 5s infinite;
+        }
+
+        /* Experience & Education Items */
+        .item {
+            margin-bottom: 30px;
+            padding: 25px;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 153, 255, 0.08);
+        }
+
+        .item::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--highlight-blue), transparent);
+        }
+
+        .item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(135deg, rgba(0, 153, 255, 0.05) 0%, transparent 70%),
+                radial-gradient(circle at bottom right, rgba(0, 212, 212, 0.05) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .item-title {
+            font-weight: bold;
+            color: var(--highlight-teal);
+            font-size: 1.25rem;
+        }
+
+        .item-subtitle {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.8);
+            position: relative;
+            z-index: 1;
+        }
+
+        .item-date {
+            color: var(--text-color);
+            background: linear-gradient(135deg, rgba(0, 153, 255, 0.2), rgba(0, 212, 212, 0.2));
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(0, 153, 255, 0.2);
+        }
+
+        .item-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .item-content ul {
+            list-style-type: none;
+            padding-left: 5px;
+        }
+
+        .item-content li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .item-content li::before {
+            content: "⟐";
+            color: var(--highlight-blue);
+            position: absolute;
+            left: 0;
+            font-size: 1rem;
+        }
+
+        /* Skills Section */
+        .skills-group {
+            margin-bottom: 25px;
+            background-color: var(--card-bg);
+            padding: 22px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 153, 255, 0.08);
+        }
+
+        .skills-group::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(135deg, rgba(0, 153, 255, 0.05) 0%, transparent 70%),
+                radial-gradient(circle at bottom right, rgba(0, 212, 212, 0.05) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .skills-title {
+            font-weight: bold;
+            color: var(--highlight-teal);
+            margin-bottom: 18px;
+            font-size: 1.15rem;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 6px;
+            z-index: 1;
+        }
+
+        .skills-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, var(--highlight-blue), transparent);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, rgba(0, 153, 255, 0.15), rgba(0, 212, 212, 0.15));
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 153, 255, 0.2);
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(135deg, rgba(0, 153, 255, 0.3), rgba(0, 212, 212, 0.3));
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animation Elements */
+        .animated-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: -25px -25px;
+            opacity: 0.15;
+            z-index: -2;
+            transform: perspective(500px) rotateX(60deg);
+            transform-origin: center top;
+            pointer-events: none;
+        }
+
+        .floating-cube {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border: 2px solid rgba(0, 153, 255, 0.3);
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+            right: 5%;
+            top: 20%;
+            transform-style: preserve-3d;
+            transform: rotateX(45deg) rotateY(45deg);
+        }
+
+        .floating-cube::before,
+        .floating-cube::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .floating-cube::before {
+            border-left: 2px solid rgba(0, 153, 255, 0.3);
+            border-top: 2px solid rgba(0, 153, 255, 0.3);
+            transform: translateZ(60px);
+        }
+
+        .floating-cube::after {
+            border-left: 2px solid rgba(0, 153, 255, 0.3);
+            border-top: 2px solid rgba(0, 153, 255, 0.3);
+            transform: translateY(60px) rotateX(-90deg);
+        }
+
+        .floating-sphere {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid rgba(0, 212, 212, 0.3);
+            opacity: 0.6;
+            animation: float 5s ease-in-out infinite;
+            left: 10%;
+            bottom: 15%;
+        }
+
+        .floating-sphere::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            border: 2px solid rgba(0, 212, 212, 0.2);
+            border-radius: 50%;
+            transform: rotateX(60deg);
+            top: 10px;
+            left: -2px;
+        }
+
+        .rotating-gear {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid rgba(0, 153, 255, 0.2);
+            right: 10%;
+            bottom: 20%;
+            animation: rotate 20s linear infinite;
+        }
+
+        .gear-tooth {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: transparent;
+            border: 2px solid rgba(0, 153, 255, 0.2);
+            transform: rotate(45deg);
+        }
+
+        .tooth-1 {
+            top: -10px;
+            left: 32px;
+        }
+
+        .tooth-2 {
+            top: 32px;
+            right: -10px;
+        }
+
+        .tooth-3 {
+            bottom: -10px;
+            left: 32px;
+        }
+
+        .tooth-4 {
+            top: 32px;
+            left: -10px;
+        }
+
+        .tooth-5 {
+            top: 5px;
+            right: 5px;
+        }
+
+        .tooth-6 {
+            bottom: 5px;
+            right: 5px;
+        }
+
+        .tooth-7 {
+            bottom: 5px;
+            left: 5px;
+        }
+
+        .tooth-8 {
+            top: 5px;
+            left: 5px;
+        }
+
+        /* Software Code Elements */
+        .code-brackets {
+            position: fixed;
+            font-family: monospace;
+            font-size: 120px;
+            color: rgba(0, 153, 255, 0.05);
+            z-index: -1;
+        }
+
+        .bracket-open {
+            top: 20%;
+            left: 20px;
+        }
+
+        .bracket-close {
+            bottom: 20%;
+            right: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .two-columns {
+                flex-direction: column;
+            }
+
+            .name {
+                font-size: 2.2rem;
+                letter-spacing: 4px;
+            }
+
+            .title {
+                font-size: 1rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .floating-cube,
+            .floating-sphere,
+            .rotating-gear,
+            .code-brackets {
+                display: none;
+            }
+
+            .item-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .item-date {
+                align-self: flex-start;
+            }
+            .loading {
+                z-index: -1;
+            }
+            .bouncing-ball {
+                height: 50px;
+                width: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Animation Elements -->
+    <div class="animated-mesh"></div>
+    <div class="code-brackets bracket-open">{</div>
+    <div class="code-content code-content-left">
+        <span class="code-line">function createRig(joint) {</span>
+        <span class="code-line"> let controller = new Control();</span>
+        <span class="code-line"> controller.connect(joint);</span>
+        <span class="code-line"> return controller;</span>
+        <span class="code-line">}</span>
+        <span class="cursor cursor-left"></span>
+    </div>
+
+    <div class="code-brackets bracket-close">}</div>
+    <div class="code-content code-content-right">
+        <span class="code-line">class Animation {</span>
+        <span class="code-line"> constructor(rig) {</span>
+        <span class="code-line"> this.rig = rig;</span>
+        <span class="code-line"> this.keyframes = [];</span>
+        <span class="code-line"> }</span>
+        <span class="cursor cursor-right"></span>
+    </div>
+
+    <div class="loading">
+        <div class="word-container">
+            <div class="word">
+                <p>{0}{0}</p>
+            </div>
+            <div class="word">
+                <p>??</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <!-- 3D and Animation Decorative Elements -->
+        <div class="floating-cube"></div>
+        <div class="floating-sphere"></div>
+        <div class="rotating-gear">
+            <div class="gear-tooth tooth-1"></div>
+            <div class="gear-tooth tooth-2"></div>
+            <div class="gear-tooth tooth-3"></div>
+            <div class="gear-tooth tooth-4"></div>
+            <div class="gear-tooth tooth-5"></div>
+            <div class="gear-tooth tooth-6"></div>
+            <div class="gear-tooth tooth-7"></div>
+            <div class="gear-tooth tooth-8"></div>
+        </div>
+
+        <!-- Header Section -->
+        <header>
+            <div class="header-bg"></div>
+            <div class="bouncing-ball">
+                <img class="my-image" src='./assets/martin_maroon.png' , alt="Bouncing Ball">
+            </div>
+            <div class="ball-shadow"></div>
+            <h1 class="name">Martin Ojom</h1>
+            <p class="title">3D Character Rigger | Character Animator | Technical Artist | Software Developer</p>
+            <div class="contact-info">
+                <a href="mailto:martinojom28@gmail.com">martinojom28@gmail.com</a>
+                <a href="tel:+256780733745">+256 780 733745</a>
+                <a href="https://artstation.com/martinojom" target="_blank">artstation.com/martinojom</a>
+                <a href="https://linkedin.com/in/martinojom" target="_blank">linkedin.com/in/martinojom</a>
+            </div>
+        </header>
+
+        <!-- About Section -->
+        <section class="about">
+            <p>I am a 3D character rigger and animator with a foundation of 18 years of experience in performance arts.
+                My artistry from dance and theatre gives me the ability to create compelling stories and dynamic
+                characters. I am also a software developer, and with my exposure to both rigging and animation, I am
+                able to script user-friendly tools that improve the efficiency of the pipeline.</p>
+        </section>
+
+        <!-- Main Content -->
+        <div class="two-columns">
+            <!-- Left Column - Experience & Education -->
+            <div class="main-column">
+                <!-- Experience Section -->
+                <div class="section">
+                    <h2 class="section-title">Experience</h2>
+                    <div class="rig-line rig-line-1"></div>
+                    <div class="rig-line rig-line-2"></div>
+                    <div class="rig-line rig-line-3"></div>
+                    <div class="rig-circle rig-circle-1"></div>
+                    <div class="rig-circle rig-circle-2"></div>
+                    <div class="rig-circle rig-circle-3"></div>
+
+                    <div class="item">
+                        <div class="item-header">
+                            <h3 class="item-title">Technical Artist & Rigger</h3>
+                            <span class="item-date">Jan 2024 - Present</span>
+                        </div>
+                        <p class="item-subtitle">Lucan Studio • South Africa</p>
+                        <div class="item-content">
+                            <ul>
+                                <li>Managed the pipeline to ensure an easy and manageable data flow between the artist,
+                                    studio and application</li>
+                                <li>Rigged production-ready characters and scripted rigging and animation helper tools
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="item-header">
+                            <h3 class="item-title">Rig Lead Artist, Character Rigger, Asset Rigger & Animator</h3>
+                            <span class="item-date">2021 - 2023</span>
+                        </div>
+                        <p class="item-subtitle">The Animation School • South Africa</p>
+                        <div class="item-content">
+                            <ul>
+                                <li>Worked with a team of 8 members in various lead and support roles to produce a short
+                                    animated film, titled LIGHTS OUT</li>
+                                <li>Improved the efficiency of the production pipeline by developing control rigs in
+                                    collaboration with the asset team and maintaining the rigs during animation and look
+                                    development</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="item-header">
+                            <h3 class="item-title">Compositor</h3>
+                            <span class="item-date">Apr 2023</span>
+                        </div>
+                        <p class="item-subtitle">Bugbox Animation • South Africa</p>
+                        <div class="item-content">
+                            <ul>
+                                <li>Conducted rendering and color grading for various scenes in a webtoon series</li>
+                                <li>Employed rendering strategies to adapt for a compressed time schedule and limited
+                                    computer power and successfully met deadlines</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="item-header">
+                            <h3 class="item-title">Motion Graphic Artist</h3>
+                            <span class="item-date">Jul 2020 - Sep 2020</span>
+                        </div>
+                        <p class="item-subtitle">Boquana Media • Kampala, Uganda</p>
+                        <div class="item-content">
+                            <ul>
+                                <li>Collaborated closely with the media advertising team to understand their clients and
+                                    their clients' needs</li>
+                                <li>Developed 4 product 3D still shots and 1 product 3D animation to use for various
+                                    formats and platforms</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="item-header">
+                            <h3 class="item-title">Artistic Director & Co-Founder</h3>
+                            <span class="item-date">Apr 2018 - Present</span>
+                        </div>
+                        <p class="item-subtitle">Watwero Dance Company • Uganda</p>
+                        <div class="item-content">
+                            <ul>
+                                <li>Produced, directed, and performed in 7 dance and theatre pieces that empowered youth
+                                    and showcased community stories</li>
+                                <li>Coordinated different departments as director, including dancers, staging,
+                                    videography, editing, costume design, and others</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education Section -->
+                <div class="section">
+                    <h2 class="section-title">Education</h2>
+
+                    <div class="item">
+                        <div class="item-header">
+                            <h3 class="item-title">Diploma in Digital Animation</h3>
+                            <span class="item-date">2021 - 2023</span>
+                        </div>
+                        <p class="item-subtitle">The Animation School • South Africa</p>
+                    </div>
+
+                    <div class="item">
+                        <div class="item-header">
+                            <h3 class="item-title">Senior 4</h3>
+                            <span class="item-date">2010 - 2013</span>
+                        </div>
+                        <p class="item-subtitle">Kitgum Town College • Uganda</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Skills -->
+            <div class="side-column">
+                <div class="section">
+                    <h2 class="section-title">Skills</h2>
+
+                    <div class="skills-group">
+                        <h3 class="skills-title">Technical</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag">Rigging (Maya)</span>
+                            <span class="skill-tag">Animation (Maya)</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">HTML/CSS</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-group">
+                        <h3 class="skills-title">Software</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag">Autodesk Maya</span>
+                            <span class="skill-tag">mGear</span>
+                            <span class="skill-tag">Substance Designer</span>
+                            <span class="skill-tag">Substance Painter</span>
+                            <span class="skill-tag">Blender</span>
+                            <span class="skill-tag">Unreal Engine</span>
+                            <span class="skill-tag">Houdini SideFX</span>
+                            <span class="skill-tag">Zoo tools</span>
+                            <span class="skill-tag">Advanced Skeleton</span>
+                            <span class="skill-tag">Adobe Creative Suite</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-group">
+                        <h3 class="skills-title">Complementary</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag">Dance Choreography</span>
+                            <span class="skill-tag">Drama</span>
+                            <span class="skill-tag">Theatre Production</span>
